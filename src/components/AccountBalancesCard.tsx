@@ -72,38 +72,40 @@ const AccountBalancesCard: React.FC = () => {
 
   const handleDeposit = async () => {
     const collection = collections.find((c) => c.id === selectedCollectionId);
-    if (!collection) return;
-
+    if (!collection) return alert('Invalid collection selected.');
+  
     const tokenIdArray = tokenIds.split(',').map((id) => id.trim()).map(Number);
     if (tokenIdArray.some(isNaN)) {
       alert('Invalid token IDs');
       return;
     }
-
-    const provider = getProvider();
+  
+    const provider = await getProvider();
     if (!provider) return;
-
+  
     try {
       setIsProcessing(true);
-
+  
       const signer = await provider.getSigner();
       const nftContract = new ethers.Contract(collection.nftAddress, ERC721_ABI, signer);
       const depositContract = new ethers.Contract(collection.mnftAddress, CONTRACT_ABI, signer);
-
+  
       const isApproved = await nftContract.isApprovedForAll(userAddress, collection.mnftAddress);
       if (!isApproved) {
+        console.log('Approving tokens...');
         const approvalTx = await nftContract.setApprovalForAll(collection.mnftAddress, true);
         await approvalTx.wait();
+        console.log('Approval successful.');
       }
-
+  
+      console.log('Depositing tokens...');
       const tx = await depositContract.deposit(tokenIdArray);
       await tx.wait();
-
       alert('Deposit successful!');
       await fetchBalances();
     } catch (error) {
       console.error('Error during deposit:', error);
-      alert('Deposit failed.');
+      alert('Deposit failed. Check console for details.');
     } finally {
       setIsProcessing(false);
     }

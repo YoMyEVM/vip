@@ -38,32 +38,40 @@ const AccountBalancesCard: React.FC = () => {
     const provider = getProvider();
     if (!provider) return;
 
-    const signer = await provider.getSigner();
-    const address = await signer.getAddress();
-    setUserAddress(address);
+    try {
+      const signer = await provider.getSigner();
+      const address = await signer.getAddress();
+      setUserAddress(address);
 
-    const updatedCollections = await Promise.all(
-      collections.map(async (collection) => {
-        try {
-          const nftContract = new ethers.Contract(collection.nftAddress, ERC721_ABI, provider);
-          const mnftContract = new ethers.Contract(collection.mnftAddress, ERC20_ABI, provider);
+      const updatedCollections = await Promise.all(
+        collections.map(async (collection) => {
+          try {
+            const nftContract = new ethers.Contract(collection.nftAddress, ERC721_ABI, provider);
+            const mnftContract = new ethers.Contract(collection.mnftAddress, ERC20_ABI, provider);
 
-          const nftBalance = await nftContract.balanceOf(address);
-          const mnftBalance = await mnftContract.balanceOf(address);
+            const nftBalance = await nftContract.balanceOf(address);
+            const mnftBalance = await mnftContract.balanceOf(address);
 
-          return {
-            ...collection,
-            nftBalance: nftBalance.toString(),
-            mnftBalance: parseFloat(ethers.formatEther(mnftBalance)).toFixed(3), // Convert balance to human-readable format
-          };
-        } catch (error) {
-          console.error(`Error fetching balances for ${collection.name}:`, error);
-          return collection;
-        }
-      })
-    );
+            return {
+              ...collection,
+              nftBalance: nftBalance.toString(),
+              mnftBalance: parseFloat(ethers.formatEther(mnftBalance)).toFixed(3), // Convert balance to human-readable format
+            };
+          } catch (error) {
+            console.error(`Error fetching balances for ${collection.name}:`, error);
+            return {
+              ...collection,
+              nftBalance: '0',
+              mnftBalance: '0',
+            }; // Default to 0 on error
+          }
+        })
+      );
 
-    setCollections(updatedCollections);
+      setCollections(updatedCollections);
+    } catch (error) {
+      console.error('Error in fetchBalances:', error);
+    }
   };
 
   useEffect(() => {
@@ -73,23 +81,23 @@ const AccountBalancesCard: React.FC = () => {
   const handleDeposit = async () => {
     const collection = collections.find((c) => c.id === selectedCollectionId);
     if (!collection) return alert('Invalid collection selected.');
-  
+
     const tokenIdArray = tokenIds.split(',').map((id) => id.trim()).map(Number);
     if (tokenIdArray.some(isNaN)) {
       alert('Invalid token IDs');
       return;
     }
-  
+
     const provider = await getProvider();
     if (!provider) return;
-  
+
     try {
       setIsProcessing(true);
-  
+
       const signer = await provider.getSigner();
       const nftContract = new ethers.Contract(collection.nftAddress, ERC721_ABI, signer);
       const depositContract = new ethers.Contract(collection.mnftAddress, CONTRACT_ABI, signer);
-  
+
       const isApproved = await nftContract.isApprovedForAll(userAddress, collection.mnftAddress);
       if (!isApproved) {
         console.log('Approving tokens...');
@@ -97,7 +105,7 @@ const AccountBalancesCard: React.FC = () => {
         await approvalTx.wait();
         console.log('Approval successful.');
       }
-  
+
       console.log('Depositing tokens...');
       const tx = await depositContract.deposit(tokenIdArray);
       await tx.wait();
@@ -113,35 +121,51 @@ const AccountBalancesCard: React.FC = () => {
 
   const handleRedeem = async () => {
     const collection = collections.find((c) => c.id === selectedCollectionId);
-    if (!collection) return;
-
+    if (!collection) return alert('Invalid collection selected.');
+  
     const tokenIdArray = tokenIds.split(',').map((id) => id.trim()).map(Number);
     if (tokenIdArray.some(isNaN)) {
       alert('Invalid token IDs');
       return;
     }
-
+  
     const provider = getProvider();
     if (!provider) return;
-
+  
     try {
       setIsProcessing(true);
-
+  
       const signer = await provider.getSigner();
       const redeemContract = new ethers.Contract(collection.mnftAddress, CONTRACT_ABI, signer);
-
+  
+      console.log('Redeeming tokens with token IDs:', tokenIdArray);
+  
       const tx = await redeemContract.redeem(tokenIdArray);
+      console.log('Transaction sent, waiting for confirmation...');
       await tx.wait();
-
+  
       alert('Redeem successful!');
       await fetchBalances();
     } catch (error) {
-      console.error('Error during redeem:', error);
-      alert('Redeem failed.');
+      if (error instanceof Error) {
+        console.error('Error during redeem:', error.message);
+  
+        if (error.message.includes('UNPREDICTABLE_GAS_LIMIT')) {
+          alert('Redeem failed. Ensure token IDs are valid and owned by your wallet.');
+        } else if (error.message.includes('CALL_EXCEPTION')) {
+          alert('Redeem failed. Check if the tokens are eligible for redemption.');
+        } else {
+          alert('Redeem failed. Check the console for details.');
+        }
+      } else {
+        console.error('Unexpected error:', error);
+        alert('An unexpected error occurred.');
+      }
     } finally {
       setIsProcessing(false);
     }
   };
+  
 
   return (
     <div className="account-balances-card">

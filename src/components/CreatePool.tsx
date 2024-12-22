@@ -66,7 +66,71 @@ const CreatePool: React.FC = () => {
   };
 
   const handleCreatePool = async () => {
-    // Pool creation logic (unchanged)
+    if (!nftAddress || !ethers.isAddress(nftAddress)) {
+      alert('Please enter a valid ERC721 contract address.');
+      return;
+    }
+
+    if (!nftName) {
+      alert('Please fetch the details first.');
+      return;
+    }
+
+    if (!window.ethereum) {
+      alert('Please connect your wallet to proceed.');
+      return;
+    }
+
+    setCreating(true);
+    try {
+      const deployerAbi = [
+        'function deployToken(address owner, string name, string symbol, uint8 decimals, address erc721Token, uint96 amountPerNFT, address admin) public returns (address)',
+      ];
+      const deployerAddress = '0x1cdF7976af8e8849Df86C9456f8551181a57d2Bf';
+
+      const provider = new ethers.BrowserProvider(window.ethereum as ethers.Eip1193Provider);
+      const signer = await provider.getSigner();
+      const deployerContract = new Contract(deployerAddress, deployerAbi, signer);
+
+      const tokenName = `m${nftName}`;
+      const tokenSymbol = `m${nftName.toUpperCase()}`;
+
+      const tx = await deployerContract.deployToken(
+        '0xC0DED9232FcDB20741c008C3Fb01B3BdC39fccE0',
+        tokenName,
+        tokenSymbol,
+        18,
+        nftAddress,
+        ethers.parseUnits('1000', 18),
+        '0xC0DED9232FcDB20741c008C3Fb01B3BdC39fccE0'
+      );
+
+      const receipt = await tx.wait();
+      const mnftAddress = receipt.contractAddress; // Assuming the contract address is part of the receipt
+
+      alert(`Token deployed successfully! Transaction hash: ${receipt.transactionHash}`);
+
+      // Add the new collection to the list
+      const newCollection = {
+        id: initialCollections.length + 1, // Incremental ID
+        name: nftName,
+        logo: nftImage, // Use the fetched image as the logo
+        nftAddress: nftAddress,
+        mnftAddress: mnftAddress,
+        nftBalance: '0',
+        mnftBalance: '0',
+        symbol: tokenSymbol.replace('m', ''), // Remove the "m" prefix for display
+      };
+
+      initialCollections.push(newCollection);
+
+      console.log('Updated Collections:', initialCollections);
+    } catch (error) {
+      console.error('Failed to create pool:', error);
+      alert('An error occurred during pool creation. Please try again.');
+    } finally {
+      setCreating(false);
+    }
   };
 
   return (
@@ -88,18 +152,17 @@ const CreatePool: React.FC = () => {
       }}
       onMouseEnter={(e) => (e.currentTarget.style.borderColor = '#5200A3')}
       onMouseLeave={(e) => (e.currentTarget.style.borderColor = '#6600CC')}
-
     >
-    <h2
-      style={{
-        margin: '0 0 5px 0',
-        fontSize: '1.3rem',
-        fontWeight: 'bold',
-        color: '#fff',
-      }}
-    >
-      Deploy NFT Swap Pool
-    </h2>
+      <h2
+        style={{
+          margin: '0 0 5px 0',
+          fontSize: '1.3rem',
+          fontWeight: 'bold',
+          color: '#fff',
+        }}
+      >
+        Deploy NFT Swap Pool
+      </h2>
       {/* Image Placeholder */}
       <div
         style={{

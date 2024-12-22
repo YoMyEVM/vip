@@ -5,7 +5,9 @@ const CreatePool: React.FC = () => {
   const [nftAddress, setNftAddress] = useState<string>('');
   const [nftName, setNftName] = useState<string>('');
  
-  const [nftImage, setNftImage] = useState<string | undefined>('placeholderimg.png');
+  const [nftImage, setNftImage] = useState<string | undefined>();
+  console.log('Image Source:', nftImage || '/placeholderimg.png');
+
   const [fetching, setFetching] = useState<boolean>(false);
   const [creating, setCreating] = useState<boolean>(false);
   const [deployTx, setDeployTx] = useState<string | null>(null);

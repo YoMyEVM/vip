@@ -64,7 +64,7 @@ const AccountLevel: React.FC = () => {
         {/* Image Container */}
         <div
           style={{
-            width: '300px',
+            width: '330px',
             height: '250px', // Slightly reduced height to bring it higher
             display: 'flex',
             justifyContent: 'center',
@@ -92,6 +92,7 @@ const AccountLevel: React.FC = () => {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
+            alignItems: 'center', // Center content including the button
           }}
         >
           <p
@@ -121,22 +122,30 @@ const AccountLevel: React.FC = () => {
           >
             0/{levelThresholds[activeLevel]} APE in Swap Value
           </p>
-          <button
+          <div
             style={{
-              padding: '10px 10px',
-              fontSize: '1rem',
-              backgroundColor: '#6600CC',
-              color: '#fff',
-              border: 'none',
-              borderRadius: '4px',
-              cursor: 'pointer',
-              transition: 'background-color 0.3s ease',
+              textAlign: 'center', // Center the button
+              marginTop: '10px', // Add spacing from the text above
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#5200A3')}
-            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#6600CC')}
           >
-            Collect
-          </button>
+            <button
+              style={{
+                padding: '10px 20px', // Adjusted to make the button less wide
+                width: '170px', // Adjusted fixed width for consistent size
+                fontSize: '1rem',
+                backgroundColor: '#6600CC',
+                color: '#fff',
+                border: 'none',
+                borderRadius: '4px',
+                cursor: 'pointer',
+                transition: 'background-color 0.3s ease',
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#5200A3')}
+              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#6600CC')}
+            >
+              Collect
+            </button>
+          </div>
         </div>
       </div>
     </div>

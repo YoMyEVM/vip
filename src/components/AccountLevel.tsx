@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const AccountLevel: React.FC = () => {
-  const levels = ['Noob', 'Level 2', 'Level 3', 'Level 4', 'Level 5', 'Level 6', 'Level 7'];
+  const levels = ['Level 1', 'Level 2', 'Level 3', 'Level 4', 'Level 5', 'Level 6', 'Level 7'];
   const levelThresholds = [100, 500, 1000, 5000, 50000, 250000, 1000000]; // Thresholds for each level
   const [activeLevel, setActiveLevel] = useState<number>(0); // Default to Level 1 (Noob)
 
@@ -18,7 +18,7 @@ const AccountLevel: React.FC = () => {
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'flex-start',
+        alignItems: 'center', // Center align the entire card content
         transition: 'border-color 0.3s ease',
       }}
       onMouseEnter={(e) => (e.currentTarget.style.borderColor = '#5200A3')}
@@ -28,8 +28,10 @@ const AccountLevel: React.FC = () => {
       <div
         style={{
           display: 'flex',
+          justifyContent: 'center', // Center the levels row
           gap: '10px',
           marginBottom: '20px',
+          width: '100%', // Ensure it spans the container width
         }}
       >
         {levels.map((level, index) => (
@@ -64,7 +66,7 @@ const AccountLevel: React.FC = () => {
         {/* Image Container */}
         <div
           style={{
-            width: '330px',
+            width: '320px',
             height: '250px', // Slightly reduced height to bring it higher
             display: 'flex',
             justifyContent: 'center',
@@ -72,7 +74,7 @@ const AccountLevel: React.FC = () => {
             overflow: 'hidden',
             borderRadius: '4px',
             marginTop: '-20px',
-            marginLeft: '10px', 
+            marginLeft: "30px",
           }}
         >
           <img
@@ -103,7 +105,7 @@ const AccountLevel: React.FC = () => {
               fontWeight: 'bold',
             }}
           >
-            {activeLevel === 0 ? 'Current Level' : 'Upcoming Level:'}
+            {activeLevel === 0 ? 'Current Level' : 'Upcoming Level'}
           </p>
           <p
             style={{

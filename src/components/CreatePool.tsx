@@ -103,7 +103,7 @@ const CreatePool: React.FC = () => {
       <div
         style={{
           width: '130px',
-          height: '130px',
+          height: '140px',
           borderRadius: '8px',
           overflow: 'hidden',
           display: 'flex',

@@ -4,7 +4,8 @@ import { ethers, Contract } from 'ethers';
 const CreatePool: React.FC = () => {
   const [nftAddress, setNftAddress] = useState<string>('');
   const [nftName, setNftName] = useState<string>('');
-  const [nftImage, setNftImage] = useState<string | null>(null);
+ 
+  const [nftImage, setNftImage] = useState<string | undefined>('placeholderimg.png');
   const [fetching, setFetching] = useState<boolean>(false);
   const [creating, setCreating] = useState<boolean>(false);
   const [deployTx, setDeployTx] = useState<string | null>(null);
@@ -14,9 +15,9 @@ const CreatePool: React.FC = () => {
       alert('Please enter a valid ERC721 contract address.');
       return;
     }
-  
+
     setFetching(true);
-    setNftImage(null); // Reset image to avoid stale data
+    setNftImage('placeholderimg.png'); // Reset image to placeholder while fetching
     try {
       const provider = new ethers.JsonRpcProvider('https://apechain.drpc.org');
       const erc721Abi = [
@@ -24,50 +25,37 @@ const CreatePool: React.FC = () => {
         'function tokenURI(uint256 tokenId) view returns (string)',
       ];
       const contract = new Contract(nftAddress, erc721Abi, provider);
-  
+
       const name = await contract.name();
       setNftName(name);
-  
-      // Simulate fetching the first token's image (using tokenId = 1)
+
       try {
         const tokenURI = await contract.tokenURI(1);
         console.log('Fetched tokenURI:', tokenURI);
-  
-        // Proxy IPFS URLs if necessary
+
         const proxiedTokenURI = tokenURI.startsWith('ipfs://')
           ? tokenURI.replace('ipfs://', 'https://ipfs.io/ipfs/')
           : tokenURI;
-  
+
         const response = await fetch(proxiedTokenURI);
         if (!response.ok) {
           console.warn('Failed to fetch metadata:', response.statusText);
-          setNftImage('fallback'); // Set fallback image
+          setNftImage('placeholderimg.png');
           return;
         }
-  
+
         const metadata = await response.json();
         console.log('Fetched metadata:', metadata);
-  
-        // Resolve the image field
+
         let imageUrl = metadata.image || null;
         if (imageUrl && imageUrl.startsWith('ipfs://')) {
           imageUrl = imageUrl.replace('ipfs://', 'https://ipfs.io/ipfs/');
         }
-  
-        if (imageUrl) {
-          const imgResponse = await fetch(imageUrl);
-          if (!imgResponse.ok) {
-            console.warn('Failed to load image:', imgResponse.statusText);
-            setNftImage('fallback'); // Set fallback image
-          } else {
-            setNftImage(imageUrl);
-          }
-        } else {
-          setNftImage('fallback'); // Set fallback image if no image is found
-        }
+
+        setNftImage(imageUrl || 'placeholderimg.png'); // Use placeholder if no image found
       } catch (imageError) {
         console.warn('Failed to fetch token image:', imageError);
-        setNftImage('fallback'); // Set fallback image
+        setNftImage('placeholderimg.png');
       }
     } catch (error) {
       console.error('Failed to fetch details:', error);
@@ -76,7 +64,7 @@ const CreatePool: React.FC = () => {
       setFetching(false);
     }
   };
-  
+
   const handleCreatePool = async () => {
     if (!nftAddress || !ethers.isAddress(nftAddress)) {
       alert('Please enter a valid ERC721 contract address.');
@@ -202,20 +190,18 @@ const CreatePool: React.FC = () => {
           <p style={{ fontSize: '0.9rem', fontWeight: 'bold', marginBottom: '5px' }}>
             {nftName}
           </p>
-          {nftImage ? (
-            <img
-              src={nftImage}
-              alt="NFT Preview"
-              style={{
-                width: '150',
-                height: '150px',
-                objectFit: 'cover',
-                borderRadius: '8px',
-              }}
-            />
-          ) : (
-            <p style={{ fontSize: '0.8rem', color: '#aaa' }}>No image available</p>
-          )}
+          <img
+            src="/placeholderimg.png"
+            alt="NFT Preview"
+            
+            style={{
+              width: '150px',
+              height: '150px',
+              objectFit: 'cover',
+              borderRadius: '8px',
+            }}
+        
+          />
         </div>
       )}
 

@@ -123,7 +123,7 @@ const AccountLevel: React.FC = () => {
           </p>
           <button
             style={{
-              padding: '10px 20px',
+              padding: '10px 10px',
               fontSize: '1rem',
               backgroundColor: '#6600CC',
               color: '#fff',

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ethers, Contract } from 'ethers';
+import { initialCollections } from './collections';
 
 const CreatePool: React.FC = () => {
   const [nftAddress, setNftAddress] = useState<string>('');

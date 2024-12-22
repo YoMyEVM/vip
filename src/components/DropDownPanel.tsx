@@ -3,7 +3,7 @@ import './DropDownPanel.css';
 
 import AccountBalancesCard from './AccountBalancesCard';
 import AccountLevel from './AccountLevel';
-import StakeCard from './LeftStatCard'; // Updated
+import CreatePool from './CreatePool';
 import RightStatCard from './RightStatCard';
 
 const DropDownPanel = () => {
@@ -54,7 +54,7 @@ const DropDownPanel = () => {
           }}
         >
           <div style={{ width: '48%', height: '100%' }}>
-            <StakeCard /> {/* Updated */}
+            <CreatePool /> {/* Updated */}
           </div>
           <div style={{ width: '48%', height: '100%' }}>
             <RightStatCard />

@@ -161,7 +161,7 @@ const CreatePool: React.FC = () => {
           color: '#fff',
         }}
       >
-        Deploy NFT Swap Pool
+        Deploy a NFT Swap Pool
       </h2>
       {/* Image Placeholder */}
       <div

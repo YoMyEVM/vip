@@ -117,8 +117,8 @@ const CreatePool: React.FC = () => {
           src={nftImage}
           alt="NFT Preview"
           style={{
-            width: '90%',
-            height: '120%',
+            width: '130px',
+            height: '130px',
             objectFit: 'cover',
             marginBottom: '-5px',
           }}

@@ -61,33 +61,43 @@ const RightStatCard: React.FC = () => {
       onMouseEnter={(e) => (e.currentTarget.style.borderColor = '#5200A3')}
       onMouseLeave={(e) => (e.currentTarget.style.borderColor = '#6600CC')}
     >
+      {/* Heading */}
       <h2
         style={{
-          margin: '0 0 1px 0',
-          fontSize: '1.3rem',
+          margin: '0 0 3px 0',
+          fontSize: '1.5rem',
           fontWeight: 'bold',
           color: '#fff',
         }}
       >
         Soon Buy a Lootbox
       </h2>
+
       {/* Lootbox Image */}
       <img
         src="/lootbox.png"
         alt="Lootbox"
         style={{
-          width: '200px', // Updated to match placeholder image
-          height: '210px', // Updated to match placeholder image
+          width: '200px',
+          height: '170px',
           objectFit: 'cover',
         }}
       />
 
       {/* Buttons */}
-      <div style={{ display: 'flex', gap: '10px', marginTop: '-25px' }}>
+      <div
+        style={{
+          marginTop: '10',
+          display: 'flex',
+          gap: '10px',
+          width: '100%', // Ensures alignment inside the card
+          justifyContent: 'center', // Center buttons horizontally
+        }}
+      >
         <button
           onClick={handleWrap}
           style={{
-            width: '110px',
+            width: '120px',
             padding: '10px',
             borderRadius: '4px',
             border: 'none',
@@ -102,7 +112,7 @@ const RightStatCard: React.FC = () => {
         <button
           onClick={handleBuyLootbox}
           style={{
-            width: '140px',
+            width: '120px',
             padding: '10px',
             borderRadius: '4px',
             border: 'none',

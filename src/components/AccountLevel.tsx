@@ -71,7 +71,8 @@ const AccountLevel: React.FC = () => {
             alignItems: 'center',
             overflow: 'hidden',
             borderRadius: '4px',
-            marginTop: '-20px', // Bring the image closer to the level counter
+            marginTop: '-20px',
+            marginLeft: '10px', 
           }}
         >
           <img
@@ -102,7 +103,7 @@ const AccountLevel: React.FC = () => {
               fontWeight: 'bold',
             }}
           >
-            {activeLevel === 0 ? 'Current Level:' : 'Upcoming Level:'}
+            {activeLevel === 0 ? 'Current Level' : 'Upcoming Level:'}
           </p>
           <p
             style={{

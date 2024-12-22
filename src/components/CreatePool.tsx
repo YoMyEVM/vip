@@ -87,18 +87,30 @@ const CreatePool: React.FC = () => {
       }}
       onMouseEnter={(e) => (e.currentTarget.style.borderColor = '#5200A3')}
       onMouseLeave={(e) => (e.currentTarget.style.borderColor = '#6600CC')}
+
     >
+    <h2
+      style={{
+        margin: '0 0 5px 0',
+        fontSize: '1.3rem',
+        fontWeight: 'bold',
+        color: '#fff',
+      }}
+    >
+      Deploy NFT Swap Pool
+    </h2>
       {/* Image Placeholder */}
       <div
         style={{
-          width: '160px',
-          height: '150px',
+          width: '130px',
+          height: '130px',
           borderRadius: '8px',
           overflow: 'hidden',
           display: 'flex',
+          marginTop: '5px',
           justifyContent: 'center',
           alignItems: 'center',
-          marginBottom: '10px',
+          marginBottom: '5px',
         }}
       >
         <img
@@ -106,15 +118,16 @@ const CreatePool: React.FC = () => {
           alt="NFT Preview"
           style={{
             width: '90%',
-            height: '100%',
+            height: '120%',
             objectFit: 'cover',
+            marginBottom: '-5px',
           }}
         />
       </div>
 
       {/* NFT Name */}
       {nftName && (
-        <p style={{ fontSize: '0.9rem', fontWeight: 'bold', marginBottom: '10px' }}>
+        <p style={{ fontSize: '0.9rem', fontWeight: 'bold', marginBottom: '1px' }}>
           {nftName}
         </p>
       )}

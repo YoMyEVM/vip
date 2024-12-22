@@ -3,7 +3,6 @@ import { ethers } from 'ethers';
 
 const RightStatCard: React.FC = () => {
   const [loading, setLoading] = useState(false);
-  const [amount, setAmount] = useState<string>('');
 
   const handleWrap = async () => {
     if (!window.ethereum) {
@@ -25,7 +24,7 @@ const RightStatCard: React.FC = () => {
         signer
       );
 
-      const tx = await contract.deposit({ value: ethers.parseEther(amount) });
+      const tx = await contract.deposit({ value: ethers.parseEther('30') }); // Fixed cost of 30 APE
       await tx.wait();
 
       alert('Wrapped successfully!');
@@ -38,43 +37,8 @@ const RightStatCard: React.FC = () => {
     }
   };
 
-  const handleUnwrap = async () => {
-    if (!window.ethereum) {
-      alert('MetaMask is not installed or unavailable.');
-      return;
-    }
-
-    try {
-      setLoading(true);
-
-      const provider = new ethers.BrowserProvider(window.ethereum);
-      const signer = await provider.getSigner();
-
-      const contract = new ethers.Contract(
-        '0x82d22b3afFdc6b743916a10de096BF6E985fD6c7',
-        [
-          {
-            name: 'withdraw',
-            type: 'function',
-            inputs: [{ name: 'amount', type: 'uint256' }],
-            outputs: [],
-            stateMutability: 'nonpayable',
-          },
-        ],
-        signer
-      );
-
-      const tx = await contract.withdraw(ethers.parseEther(amount));
-      await tx.wait();
-
-      alert('Unwrapped successfully!');
-    } catch (error) {
-      const err = error as Error; // Type assertion
-      console.error('Error unwrapping:', err);
-      alert(`Failed to unwrap: ${err.message}`);
-    } finally {
-      setLoading(false);
-    }
+  const handleBuyLootbox = () => {
+    alert('Buy Lootbox functionality is coming soon!');
   };
 
   return (
@@ -97,28 +61,33 @@ const RightStatCard: React.FC = () => {
       onMouseEnter={(e) => (e.currentTarget.style.borderColor = '#5200A3')}
       onMouseLeave={(e) => (e.currentTarget.style.borderColor = '#6600CC')}
     >
-      <input
-        type="text"
-        placeholder="Enter amount (in APE)"
-        value={amount}
-        onChange={(e) => setAmount(e.target.value)}
+      <h2
         style={{
-          padding: '5px',
-          borderRadius: '4px',
-          border: '1px solid #6600CC',
-          marginBottom: '2px',
-          width: '200px',
-          backgroundColor: '#121212',
+          margin: '0 0 1px 0',
+          fontSize: '1.3rem',
+          fontWeight: 'bold',
           color: '#fff',
-          fontSize: '1rem',
-          textAlign: 'center',
+        }}
+      >
+        Soon Buy a Lootbox
+      </h2>
+      {/* Lootbox Image */}
+      <img
+        src="/lootbox.png"
+        alt="Lootbox"
+        style={{
+          width: '200px', // Updated to match placeholder image
+          height: '210px', // Updated to match placeholder image
+          objectFit: 'cover',
         }}
       />
-      <div style={{ display: 'flex', gap: '10px' }}>
+
+      {/* Buttons */}
+      <div style={{ display: 'flex', gap: '10px', marginTop: '-25px' }}>
         <button
           onClick={handleWrap}
           style={{
-            width: '110px', // Set equal width for both buttons
+            width: '110px',
             padding: '10px',
             borderRadius: '4px',
             border: 'none',
@@ -131,46 +100,22 @@ const RightStatCard: React.FC = () => {
           {loading ? 'Wrapping...' : 'Wrap APE'}
         </button>
         <button
-          onClick={handleUnwrap}
+          onClick={handleBuyLootbox}
           style={{
-            width: '110px', // Set equal width for both buttons
+            width: '140px',
             padding: '10px',
             borderRadius: '4px',
             border: 'none',
             backgroundColor: '#6600CC',
             color: '#fff',
             cursor: 'pointer',
+            fontSize: '1rem',
           }}
-          disabled={loading}
+          disabled
         >
-          {loading ? 'Unwrapping...' : 'Unwrap APE'}
+          Buy Lootbox
         </button>
       </div>
-      <img
-        src="/lootbox.png"
-        alt="Lootbox"
-        style={{
-          marginTop: '-25px',
-          width: '180px',
-          height: '180px',
-          objectFit: 'cover',
-        }}
-      />
-      <button
-        style={{
-          marginTop: '-30px',
-          padding: '10px 40px',
-          borderRadius: '4px',
-          border: 'none',
-          backgroundColor: '#6600CC',
-          color: '#fff',
-          cursor: 'pointer',
-          fontSize: '1rem',
-        }}
-        disabled
-      >
-        Soon Buy Lootbox
-      </button>
     </div>
   );
 };

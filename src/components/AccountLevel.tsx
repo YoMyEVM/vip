@@ -112,7 +112,7 @@ const AccountLevel: React.FC = () => {
               fontSize: '3rem',
               margin: '0 0 10px 0',
               fontWeight: 'bold',
-              color: '#6600CC',
+              color: '#D27BF4',
             }}
           >
             {levels[activeLevel]}

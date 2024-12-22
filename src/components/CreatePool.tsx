@@ -150,7 +150,7 @@ const CreatePool: React.FC = () => {
     >
       <input
         type="text"
-        placeholder="Enter ERC721 contract address"
+        placeholder="Enter an ERC721 Address"
         value={nftAddress}
         onChange={(e) => setNftAddress(e.target.value)}
         style={{

@@ -123,7 +123,7 @@ const RightStatCard: React.FC = () => {
           }}
           disabled
         >
-          Buy Lootbox
+          Coming Soon
         </button>
       </div>
     </div>

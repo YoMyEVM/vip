@@ -79,7 +79,7 @@ const RightAboutCard = () => {
           onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#5200A3')}
           onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#6600CC')}
         >
-          Visit ISAI NFT
+          Visit ISAI
         </a>
       </div>
 

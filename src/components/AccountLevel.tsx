@@ -146,7 +146,7 @@ const AccountLevel: React.FC = () => {
               onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#5200A3')}
               onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#6600CC')}
             >
-              Collect
+              Collect Soon
             </button>
           </div>
         </div>

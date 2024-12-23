@@ -34,13 +34,15 @@
     align-items: center; /* Center content horizontally */
     text-align: center; /* Center-align text */
   }
-  
+
   .about-card h3 {
     font-family: 'Shanti', sans-serif;
-    font-size: 2vw; /* Responsive heading font size */
-    margin-bottom: 1rem; /* Space below heading */
-    color: #ffffff;
+    font-size: 1.5rem;
+    color: #fff;
+    margin-top: 10px; /* Adjust this value to reduce spacing above */
+    margin-bottom: 20px; /* Maintain spacing below the title */
   }
+  
   
   .about-card p {
     font-family: 'Shanti', sans-serif;

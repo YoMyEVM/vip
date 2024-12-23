@@ -1,15 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './AboutPanel.css';
 
 const RightAboutCard = () => {
   const howToItems = [
-    'Add Liquidity and Swap within Collections',
-    'Buy and Open Lootbox',
-    'Cross Collection Swaps',
-    'Swap and Staking Rewards',
-    'Self Repaying NFT Purchases',
-    'P2P NFT Lending',
+    {
+      title: 'Add Liquidity and Swap within Collections',
+      description: 'Coming Soon.',
+    },
+    {
+      title: 'Cross Collection Swaps',
+      description: 'Coming Soon.',
+    },
+    {
+      title: 'Buy and Open Lootbox',
+      description: 'Coming Soon.',
+    },
+    {
+      title: 'Direct Buy and Direct Sell',
+      description: 'Coming Soon.',
+    },
+    {
+      title: 'Swap and Staking Rewards',
+      description: 'Coming Soon.',
+    },
+    {
+      title: 'P2P NFT Lending',
+      description: 'Coming Soon.',
+    },
+    {
+      title: 'Self Repaying NFT Purchases',
+      description: 'Coming Soon.',
+    },
+    {
+      title: 'P2P NFT Lending',
+      description: 'Coming Soon.',
+    },
+    {
+      title: 'Advanced Tokenized Payoffs',
+      description: 'Coming Soon.',
+    },
   ];
+
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
+  const toggleExpanded = (index: number) => {
+    setExpandedIndex(expandedIndex === index ? null : index);
+  };
 
   return (
     <div className="about-card right" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
@@ -17,8 +53,30 @@ const RightAboutCard = () => {
       <div style={{ flex: 1, textAlign: 'center', padding: '20px' }}>
         <h3>Become a VIP</h3>
         <p>
-          Join our exclusive VIP program to unlock advanced features, gain rewards, and access premium DeFi tools.
+          Become a VIP by reserving or <p></p>urchaing an ISAI Agent to recieve forever rewards and unmatched web3 utility.
         </p>
+        <a
+          href="https://myevm.network"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: 'inline-block',
+            marginTop: '20px',
+            padding: '10px 20px',
+            fontSize: '1rem',
+            backgroundColor: '#6600CC',
+            color: '#fff',
+            border: 'none',
+            borderRadius: '8px',
+            textDecoration: 'none',
+            cursor: 'pointer',
+            transition: 'background-color 0.3s ease',
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#5200A3')}
+          onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#6600CC')}
+        >
+          Visit ISAI NFT
+        </a>
       </div>
 
       {/* How To Section */}
@@ -28,8 +86,9 @@ const RightAboutCard = () => {
           {howToItems.map((item, index) => (
             <button
               key={index}
+              onClick={() => toggleExpanded(index)}
               style={{
-                padding: '10px 20px',
+                padding: expandedIndex === index ? '20px' : '10px 20px',
                 fontSize: '1rem',
                 backgroundColor: '#1c1f26',
                 color: '#fff',
@@ -37,18 +96,23 @@ const RightAboutCard = () => {
                 borderRadius: '8px',
                 cursor: 'pointer',
                 textAlign: 'left',
-                transition: 'background-color 0.3s ease, border-color 0.3s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#5200A3';
-                e.currentTarget.style.borderColor = '#5200A3';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#1c1f26';
-                e.currentTarget.style.borderColor = '#6600CC';
+                transition: 'all 0.3s ease',
+                height: expandedIndex === index ? 'auto' : '40px',
+                overflow: 'hidden',
               }}
             >
-              {item}
+              <span>{item.title}</span>
+              {expandedIndex === index && (
+                <p
+                  style={{
+                    marginTop: '10px',
+                    fontSize: '0.9rem',
+                    color: '#d1d5db',
+                  }}
+                >
+                  {item.description}
+                </p>
+              )}
             </button>
           ))}
         </div>

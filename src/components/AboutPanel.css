@@ -90,3 +90,29 @@
     margin-bottom: 0.5rem; /* Add space between steps */
   }
   
+
+  /* Custom Scrollbar */
+.about-card::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  .about-card::-webkit-scrollbar-track {
+    background: #1c1f26; /* Background of the track */
+  }
+  
+  .about-card::-webkit-scrollbar-thumb {
+    background: #6600CC; /* Scrollbar thumb */
+    border-radius: 8px;
+    border: 2px solid #1c1f26; /* Matches the background to give a seamless border */
+  }
+  
+  .about-card::-webkit-scrollbar-thumb:hover {
+    background: #5200A3; /* Hover effect on the scrollbar thumb */
+  }
+  
+  /* For Firefox */
+  .about-card {
+    scrollbar-color: #6600CC #1c1f26; /* Thumb and track colors */
+    scrollbar-width: thin; /* Thin scrollbar */
+  }
+  

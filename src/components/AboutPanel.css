@@ -1,0 +1,90 @@
+.about-panel {
+    background-color: #111827; /* Matches dropdown background */
+    height: 100vh; /* Full height of viewport */
+    width: 100%; /* Full width of viewport */
+    display: flex; /* Flexbox layout for content */
+    justify-content: center; /* Center cards horizontally */
+    align-items: center; /* Center cards vertically */
+    padding: 0; /* No padding for panel */
+    box-sizing: border-box;
+  }
+  
+  .about-panel-content {
+    display: flex; /* Flexbox for side-by-side cards */
+    width: 80%; /* Adjust width to account for sidebars */
+    max-width: 1200px; /* Optional: Limit the max width */
+    margin: 0 auto; /* Center the content within the panel */
+    height: 90%; /* Adjust height to ensure proper spacing */
+    box-sizing: border-box; /* Include padding and borders in width/height */
+  }
+  
+  .about-card {
+    border: 2px solid #6600cc; /* Purple border */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #1e293b; /* Card background color */
+    color: #ffffff; /* Text color */
+    padding: 20px; /* Spacing inside the card */
+    box-sizing: border-box; /* Include padding in size */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    width: 48%; /* Cards take slightly less width to add spacing */
+    height: 100%; /* Cards take full height of the content container */
+    display: flex; /* Flexbox for card content */
+    flex-direction: column; /* Stack content vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    text-align: center; /* Center-align text */
+  }
+  
+  .about-card h3 {
+    font-family: 'Shanti', sans-serif;
+    font-size: 2vw; /* Responsive heading font size */
+    margin-bottom: 1rem; /* Space below heading */
+    color: #ffffff;
+  }
+  
+  .about-card p {
+    font-family: 'Shanti', sans-serif;
+    font-size: 1.5vw; /* Responsive paragraph font size */
+    margin: 0;
+    color: #d1d5db; /* Light gray text */
+  }
+  
+  .about-card.left {
+    margin-right: 2%; /* Add spacing between the two cards */
+  }
+  
+  .about-card.right {
+    margin-left: 2%; /* Add spacing between the two cards */
+  }
+  
+  .how-to-list {
+    list-style-type: none; /* Remove default bullets */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+    text-align: left; /* Align text to the left */
+    font-size: 1.2vw; /* Responsive font size */
+    color: #d1d5db; /* Light gray text color */
+  }
+  
+  .how-to-list li {
+    margin-bottom: 1rem; /* Add space between main list items */
+  }
+  
+  .how-to-description {
+    margin-top: 0.5rem; /* Space between title and description */
+    font-size: 1vw; /* Smaller font for descriptions */
+    color: #d1d5db; /* Light gray text */
+  }
+  
+  .steps-list {
+    list-style-type: decimal; /* Use numbers for the steps */
+    margin-top: 0.5rem; /* Add spacing above the steps list */
+    margin-left: 1.5rem; /* Indent steps relative to the parent item */
+    font-size: 1vw; /* Smaller font size for steps */
+    color: #d1d5db; /* Light gray text for steps */
+  }
+  
+  .steps-list li {
+    margin-bottom: 0.5rem; /* Add space between steps */
+  }
+  

@@ -8,19 +8,19 @@ const RightAboutCard = () => {
       description: [
         'Connect your wallet.',
         'Choose a collection.',
-        'Choose NFT to recieve.',
+        'Choose NFT to receive.',
         'Choose NFT to give.',
-        'Click Swap',
+        'Click "Swap" button.',
       ],
     },
     {
       title: 'Add/Remove Liquidity',
       description: [
         'Connect your wallet.',
-        'Navigate to Account Balance and Liquidity Section',
-        'Select Collection from the dropdown.',
-        'Provide the token ids you would like to add or remove like 799,20,9389',
-        'Click Add Liquidity or Remove Liquidity.',
+        'Navigate to Account Balance and Liquidity Section.',
+        'Select a collection from the dropdown.',
+        'Provide the token IDs you would like to add or remove. Example:799, 20, 9389.',
+        'Click "Add Liquidity" or "Remove Liquidity" button.',
       ],
     },
     {
@@ -28,7 +28,7 @@ const RightAboutCard = () => {
       description: ['Coming Soon.'],
     },
     {
-      title: 'Get Collection Listed',
+      title: 'Get a Collection Listed',
       description: ['Coming Soon.'],
     },
     {
@@ -106,9 +106,9 @@ const RightAboutCard = () => {
               style={{
                 padding: expandedIndex === index ? '20px' : '10px 20px',
                 fontSize: '1rem',
-                backgroundColor: '#1c1f26',
-                color: '#fff',
-                border: '2px solid #6600CC',
+                backgroundColor: index < 2 ? '#004d00' : '#1c1f26', // Green background for the first two items
+                color: index < 2 ? '#a7ff83' : '#fff', // Light green text for the first two items
+                border: index < 2 ? '2px solid #007f00' : '2px solid #6600CC', // Green border for the first two items
                 borderRadius: '8px',
                 cursor: 'pointer',
                 textAlign: 'left',

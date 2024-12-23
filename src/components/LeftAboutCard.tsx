@@ -5,11 +5,11 @@ const LeftAboutCard = () => {
   const roadmapItems = [
     {
       title: 'Swap within Collections',
-      description: 'Coming Soon.',
+      description: 'Swap a floor NFT from a collection to a floor NFT of the same collection with zero fees.',
     },
     {
       title: 'Add/Remove Liquidity',
-      description: 'Coming Soon.',
+      description: 'Wrap 1 NFT of a collection into 1000 mNFT ERC20 token fractions. Unwrap to recieve 1 NFT by returning the 1000 mNFT tokens',
     },
     {
       title: 'Deploy Swap Pool',

@@ -70,7 +70,7 @@ const RightAboutCard = () => {
       <div style={{ flex: 1, textAlign: 'center', padding: '20px' }}>
         <h3>Become a VIP</h3>
         <p>
-          Reserve an ISAI Agent to mine rewards <br /> and automate your Web3 Life.
+          Reserve an ISAI Agent to mine<br /> rewards and automate your Web3 Life.
         </p>
         <a
           href="https://myevm.network"

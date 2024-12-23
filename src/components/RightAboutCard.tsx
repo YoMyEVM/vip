@@ -4,7 +4,19 @@ import './AboutPanel.css';
 const RightAboutCard = () => {
   const howToItems = [
     {
-      title: 'Add Liquidity and Swap within Collections',
+      title: 'Swap within Collections',
+      description: 'Coming Soon.',
+    },
+    {
+      title: 'Add/Remove Liquidity',
+      description: 'Coming Soon.',
+    },
+    {
+      title: 'Deploy Swap Pool',
+      description: 'Coming Soon.',
+    },
+    {
+      title: 'Get Collection Listed',
       description: 'Coming Soon.',
     },
     {
@@ -24,19 +36,11 @@ const RightAboutCard = () => {
       description: 'Coming Soon.',
     },
     {
-      title: 'P2P NFT Lending',
-      description: 'Coming Soon.',
-    },
-    {
       title: 'Self Repaying NFT Purchases',
       description: 'Coming Soon.',
     },
     {
-      title: 'P2P NFT Lending',
-      description: 'Coming Soon.',
-    },
-    {
-      title: 'Advanced Tokenized Payoffs',
+      title: 'Advanced NFT Payoffs',
       description: 'Coming Soon.',
     },
   ];
@@ -53,7 +57,7 @@ const RightAboutCard = () => {
       <div style={{ flex: 1, textAlign: 'center', padding: '20px' }}>
         <h3>Become a VIP</h3>
         <p>
-          Become a VIP by reserving or <p></p>urchaing an ISAI Agent to recieve forever rewards and unmatched web3 utility.
+          Reserve an ISAI Agent to mine rewards <br /> and automate your Web3 Life.
         </p>
         <a
           href="https://myevm.network"
@@ -90,9 +94,9 @@ const RightAboutCard = () => {
               style={{
                 padding: expandedIndex === index ? '20px' : '10px 20px',
                 fontSize: '1rem',
-                backgroundColor: '#1c1f26',
-                color: '#fff',
-                border: '2px solid #6600CC',
+                backgroundColor: index === 0 || index === 1 ? '#004d00' : '#1c1f26', // Green for first two items
+                color: index === 0 || index === 1 ? '#a7ff83' : '#fff', // Light green text for first two items
+                border: index === 0 || index === 1 ? '2px solid #007f00' : '2px solid #6600CC', // Green border for first two items
                 borderRadius: '8px',
                 cursor: 'pointer',
                 textAlign: 'left',

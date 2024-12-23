@@ -4,7 +4,19 @@ import './AboutPanel.css';
 const LeftAboutCard = () => {
   const roadmapItems = [
     {
-      title: 'Add Liquidity and Swap within Collections',
+      title: 'Swap within Collections',
+      description: 'Coming Soon.',
+    },
+    {
+      title: 'Add/Remove Liquidity',
+      description: 'Coming Soon.',
+    },
+    {
+      title: 'Deploy Swap Pool',
+      description: 'Coming Soon.',
+    },
+    {
+      title: 'Collection Listing',
       description: 'Coming Soon.',
     },
     {
@@ -16,7 +28,7 @@ const LeftAboutCard = () => {
       description: 'Coming Soon.',
     },
     {
-      title: 'Direct Buying and Selling',
+      title: 'Direct Buy and Direct Sell',
       description: 'Coming Soon.',
     },
     {
@@ -28,11 +40,7 @@ const LeftAboutCard = () => {
       description: 'Coming Soon.',
     },
     {
-      title: 'P2P NFT Lending',
-      description: 'Coming Soon.',
-    },
-    {
-      title: 'Advanced Tokenized Payoffs',
+      title: 'Advanced NFT Payoffs',
       description: 'Coming Soon.',
     },
   ];
@@ -49,7 +57,7 @@ const LeftAboutCard = () => {
       <div style={{ flex: 1, textAlign: 'center', padding: '20px' }}>
         <h3>Our Vision</h3>
         <p>
-          Creating a Liquid NFT Market<br /> and Seamless Trading Experience<br /> for Users of Any Skill Level
+          Creating Liquid NFT Markets <br /> and Seamless Trading Experience
         </p>
         <a
           href="https://myevm.org"
@@ -86,9 +94,9 @@ const LeftAboutCard = () => {
                 style={{
                   padding: expandedIndex === index ? '20px' : '10px 20px',
                   fontSize: '1rem',
-                  backgroundColor: index === 0 ? '#004d00' : '#1c1f26', // Green background for the first item
-                  color: index === 0 ? '#a7ff83' : '#fff', // Light green text for the first item
-                  border: index === 0 ? '2px solid #007f00' : '2px solid #6600CC', // Green border for the first item
+                  backgroundColor: index === 0 || index === 1 ? '#004d00' : '#1c1f26', // Green background for the first two items
+                  color: index === 0 || index === 1 ? '#a7ff83' : '#fff', // Light green text for the first two items
+                  border: index === 0 || index === 1 ? '2px solid #007f00' : '2px solid #6600CC', // Green border for the first two items
                   borderRadius: '8px',
                   cursor: 'pointer',
                   textAlign: 'left',

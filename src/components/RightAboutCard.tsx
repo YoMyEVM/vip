@@ -5,43 +5,55 @@ const RightAboutCard = () => {
   const howToItems = [
     {
       title: 'Swap within Collections',
-      description: 'Coming Soon.',
+      description: [
+        'Connect your wallet.',
+        'Choose a collection.',
+        'Choose NFT to recieve.',
+        'Choose NFT to give.',
+        'Click Swap',
+      ],
     },
     {
       title: 'Add/Remove Liquidity',
-      description: 'Coming Soon.',
+      description: [
+        'Connect your wallet.',
+        'Navigate to Account Balance and Liquidity Section',
+        'Select Collection from the dropdown.',
+        'Provide the token ids you would like to add or remove like 799,20,9389',
+        'Click Add Liquidity or Remove Liquidity.',
+      ],
     },
     {
       title: 'Deploy Swap Pool',
-      description: 'Coming Soon.',
+      description: ['Coming Soon.'],
     },
     {
       title: 'Get Collection Listed',
-      description: 'Coming Soon.',
+      description: ['Coming Soon.'],
     },
     {
       title: 'Cross Collection Swaps',
-      description: 'Coming Soon.',
+      description: ['Coming Soon.'],
     },
     {
       title: 'Buy and Open Lootbox',
-      description: 'Coming Soon.',
+      description: ['Coming Soon.'],
     },
     {
       title: 'Direct Buy and Direct Sell',
-      description: 'Coming Soon.',
+      description: ['Coming Soon.'],
     },
     {
       title: 'Swap and Staking Rewards',
-      description: 'Coming Soon.',
+      description: ['Coming Soon.'],
     },
     {
       title: 'Self Repaying NFT Purchases',
-      description: 'Coming Soon.',
+      description: ['Coming Soon.'],
     },
     {
       title: 'Advanced NFT Payoffs',
-      description: 'Coming Soon.',
+      description: ['Coming Soon.'],
     },
   ];
 
@@ -79,7 +91,7 @@ const RightAboutCard = () => {
           onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#5200A3')}
           onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#6600CC')}
         >
-          Visit ISAI
+          Visit ISAI NFT
         </a>
       </div>
 
@@ -94,9 +106,9 @@ const RightAboutCard = () => {
               style={{
                 padding: expandedIndex === index ? '20px' : '10px 20px',
                 fontSize: '1rem',
-                backgroundColor: index === 0 || index === 1 ? '#004d00' : '#1c1f26', // Green for first two items
-                color: index === 0 || index === 1 ? '#a7ff83' : '#fff', // Light green text for first two items
-                border: index === 0 || index === 1 ? '2px solid #007f00' : '2px solid #6600CC', // Green border for first two items
+                backgroundColor: '#1c1f26',
+                color: '#fff',
+                border: '2px solid #6600CC',
                 borderRadius: '8px',
                 cursor: 'pointer',
                 textAlign: 'left',
@@ -106,7 +118,23 @@ const RightAboutCard = () => {
               }}
             >
               <span>{item.title}</span>
-              {expandedIndex === index && (
+              {expandedIndex === index && Array.isArray(item.description) && (
+                <ol
+                  style={{
+                    marginTop: '10px',
+                    fontSize: '0.9rem',
+                    color: '#d1d5db',
+                    paddingLeft: '20px',
+                  }}
+                >
+                  {item.description.map((step, stepIndex) => (
+                    <li key={stepIndex} style={{ marginBottom: '5px' }}>
+                      {step}
+                    </li>
+                  ))}
+                </ol>
+              )}
+              {expandedIndex === index && !Array.isArray(item.description) && (
                 <p
                   style={{
                     marginTop: '10px',

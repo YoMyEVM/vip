@@ -13,15 +13,15 @@ const LeftAboutCard = () => {
     },
     {
       title: 'Deploy Swap Pool',
-      description: 'Coming Soon.',
+      description: 'Deploy a Fractional Swap Pool for any ERC721 collection returning 1000 ERC20 fractions per NFT deposited.',
     },
     {
       title: 'Collection Listing',
-      description: 'Coming Soon.',
+      description: 'Get a collection listed for inter-Collection or cross-collection swaps.',
     },
     {
       title: 'Cross Collection Swaps',
-      description: 'Coming Soon.',
+      description: 'Mutli-hop cross-collections swaps via Camelot Dex.',
     },
     {
       title: 'Randomized LootBox Sales',
@@ -36,13 +36,14 @@ const LeftAboutCard = () => {
       description: 'Coming Soon.',
     },
     {
-      title: 'Self Repaying NFT Purchases',
-      description: 'Coming Soon.',
-    },
-    {
       title: 'Advanced NFT Payoffs',
       description: 'Coming Soon.',
     },
+    {
+      title: 'Self Repaying NFT Purchases',
+      description: 'Coming Soon.',
+    },
+
   ];
 
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);

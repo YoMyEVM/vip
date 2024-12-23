@@ -24,11 +24,11 @@ const LeftAboutCard = () => {
       description: 'Mutli-hop cross-collections swaps via Camelot Dex.',
     },
     {
-      title: 'Randomized LootBox Sales',
+      title: 'Direct Buy and Direct Sell',
       description: 'Coming Soon.',
     },
     {
-      title: 'Direct Buy and Direct Sell',
+      title: 'Randomized LootBox Sales',
       description: 'Coming Soon.',
     },
     {
@@ -40,7 +40,7 @@ const LeftAboutCard = () => {
       description: 'Coming Soon.',
     },
     {
-      title: 'Self Repaying NFT Purchases',
+      title: 'Top Secret',
       description: 'Coming Soon.',
     },
 
@@ -86,7 +86,7 @@ const LeftAboutCard = () => {
 
       {/* Roadmap Section */}
       <div style={{ flex: 2, padding: '20px', borderTop: '2px solid #6600CC', overflowY: 'auto' }}>
-        <h3>Roadmap</h3>
+        <h4>Roadmap</h4>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
           {roadmapItems.map((item, index) => (
             <div key={index} style={{ display: 'flex', flexDirection: 'column' }}>

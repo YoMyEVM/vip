@@ -36,23 +36,24 @@ const RightAboutCard = () => {
       description: ['Coming Soon.'],
     },
     {
+      title: 'Direct Buy and Direct Sell',
+      description: 'Coming Soon.',
+    },
+    {
       title: 'Buy and Open Lootbox',
       description: ['Coming Soon.'],
     },
-    {
-      title: 'Direct Buy and Direct Sell',
-      description: ['Coming Soon.'],
-    },
+
     {
       title: 'Swap and Staking Rewards',
       description: ['Coming Soon.'],
     },
     {
-      title: 'Self Repaying NFT Purchases',
+      title: 'Advanced NFT Payoffs',
       description: ['Coming Soon.'],
     },
     {
-      title: 'Advanced NFT Payoffs',
+      title: 'Top Secret',
       description: ['Coming Soon.'],
     },
   ];
@@ -97,7 +98,7 @@ const RightAboutCard = () => {
 
       {/* How To Section */}
       <div style={{ flex: 2, padding: '20px', borderTop: '2px solid #6600CC', overflowY: 'auto' }}>
-        <h3>How To</h3>
+        <h4>How To</h4>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
           {howToItems.map((item, index) => (
             <button

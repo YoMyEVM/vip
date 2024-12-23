@@ -38,6 +38,14 @@
   .about-card h3 {
     font-family: 'Shanti', sans-serif;
     font-size: 1.5rem;
+    color: #C031E9;
+    margin-top: 10px; /* Adjust this value to reduce spacing above */
+    margin-bottom: 20px; /* Maintain spacing below the title */
+  }
+
+  .about-card h4 {
+    font-family: 'Shanti', sans-serif;
+    font-size: 1.5rem;
     color: #fff;
     margin-top: 10px; /* Adjust this value to reduce spacing above */
     margin-bottom: 20px; /* Maintain spacing below the title */

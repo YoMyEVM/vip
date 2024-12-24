@@ -52,7 +52,7 @@ export interface Collection {
     },
     {
       id: 5,
-      name: 'Dillas',
+      name: 'DILLAS',
       logo: './dillaslogo.svg',
       nftAddress: '0x25fCA820298EF519b40197A5713ED9d50da38Ecf',
       mnftAddress: '0x01559ca8d8e16eDAdc9399bCeD9e522ac312b93D',

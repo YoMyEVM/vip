@@ -42,16 +42,6 @@ export interface Collection {
     },
     {
       id: 4,
-      name: 'MONKEES',
-      logo: './monkeeslogo.svg',
-      nftAddress: '0x2bEa2b6Bad866b5cA62117855D4b5D8A6C996Db2',
-      mnftAddress: '0x1eD327c0FAD66dB2258268D9841001853cD13Ff1',
-      nftBalance: '0',
-      mnftBalance: '0',
-      symbol: 'MONKEES',
-    },
-    {
-      id: 5,
       name: 'DNSRS',
       logo: './dsnrslogo.svg',
       nftAddress: '0x896BE40d15d1dbFA4F4Ff25A110F3CE770e07897',
@@ -61,14 +51,15 @@ export interface Collection {
       symbol: 'DNSRS',
     },
     {
-      id: 6,
-      name: 'OOGIES',
-      logo: './oogieslogo.svg',
-      nftAddress: '0x7cA094eB7E2e305135A0c49835e394b0daca8C56',
-      mnftAddress: '0x25fcaceB144227A341C2E621369346247EE7F902',
+      id: 5,
+      name: 'Dillas',
+      logo: './dillaslogo.svg',
+      nftAddress: '0x25fCA820298EF519b40197A5713ED9d50da38Ecf',
+      mnftAddress: '0x01559ca8d8e16eDAdc9399bCeD9e522ac312b93D',
       nftBalance: '0',
       mnftBalance: '0',
-      symbol: 'OOGIES',
+      symbol: 'DILLAS',
     },
+    
   ];
   

@@ -25,7 +25,12 @@ const RightAboutCard = () => {
     },
     {
       title: 'Deploy Swap Pool',
-      description: ['Coming Soon.'],
+      description: [
+        'Connect your wallet.',
+        'Navigate to the Create Pool Section.',
+        'Input the details of the pool (e.g., collection address, token symbol).',
+        'Click "Deploy Pool".',
+      ],
     },
     {
       title: 'Get a Collection Listed',
@@ -43,7 +48,6 @@ const RightAboutCard = () => {
       title: 'Buy and Open Lootbox',
       description: ['Coming Soon.'],
     },
-
     {
       title: 'Swap and Staking Rewards',
       description: ['Coming Soon.'],
@@ -66,37 +70,11 @@ const RightAboutCard = () => {
 
   return (
     <div className="about-card right" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-      {/* Become a VIP Section */}
       <div style={{ flex: 1, textAlign: 'center', padding: '20px' }}>
         <h3>Become a VIP</h3>
-        <p>
-          Reserve an ISAI Agent to mine<br /> rewards and automate your Web3 Life.
-        </p>
-        <a
-          href="https://myevm.network"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            display: 'inline-block',
-            marginTop: '20px',
-            padding: '10px 20px',
-            fontSize: '1rem',
-            backgroundColor: '#6600CC',
-            color: '#fff',
-            border: 'none',
-            borderRadius: '8px',
-            textDecoration: 'none',
-            cursor: 'pointer',
-            transition: 'background-color 0.3s ease',
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#5200A3')}
-          onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#6600CC')}
-        >
-          Visit ISAI
-        </a>
+        <p>Reserve an ISAI Agent to mine<br /> rewards and automate your Web3 Life.</p>
       </div>
 
-      {/* How To Section */}
       <div style={{ flex: 2, padding: '20px', borderTop: '2px solid #6600CC', overflowY: 'auto' }}>
         <h4>How To</h4>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -107,9 +85,9 @@ const RightAboutCard = () => {
               style={{
                 padding: expandedIndex === index ? '20px' : '10px 20px',
                 fontSize: '1rem',
-                backgroundColor: index < 2 ? '#004d00' : '#1c1f26', // Green background for the first two items
-                color: index < 2 ? '#a7ff83' : '#fff', // Light green text for the first two items
-                border: index < 2 ? '2px solid #007f00' : '2px solid #6600CC', // Green border for the first two items
+                backgroundColor: index <= 2 ? '#004d00' : '#1c1f26', // Mark first three items as green
+                color: index <= 2 ? '#a7ff83' : '#fff', // Light green text for first three items
+                border: index <= 2 ? '2px solid #007f00' : '2px solid #6600CC', // Green border for first three items
                 borderRadius: '8px',
                 cursor: 'pointer',
                 textAlign: 'left',

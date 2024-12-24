@@ -43,7 +43,6 @@ const LeftAboutCard = () => {
       title: 'Top Secret',
       description: 'Coming Soon.',
     },
-
   ];
 
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
@@ -54,37 +53,11 @@ const LeftAboutCard = () => {
 
   return (
     <div className="about-card left" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-      {/* Vision Section */}
       <div style={{ flex: 1, textAlign: 'center', padding: '20px' }}>
         <h3>Our Vision</h3>
-        <p>
-          Creating Liquid NFT Markets <br /> and Seamless Trading Experience
-        </p>
-        <a
-          href="https://myevm.org"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            display: 'inline-block',
-            marginTop: '20px',
-            padding: '10px 20px',
-            fontSize: '1rem',
-            backgroundColor: '#6600CC',
-            color: '#fff',
-            border: 'none',
-            borderRadius: '8px',
-            textDecoration: 'none',
-            cursor: 'pointer',
-            transition: 'background-color 0.3s ease',
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#5200A3')}
-          onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#6600CC')}
-        >
-          About Us
-        </a>
+        <p>Creating Liquid NFT Markets <br /> and Seamless Trading Experience</p>
       </div>
 
-      {/* Roadmap Section */}
       <div style={{ flex: 2, padding: '20px', borderTop: '2px solid #6600CC', overflowY: 'auto' }}>
         <h4>Roadmap</h4>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -95,9 +68,9 @@ const LeftAboutCard = () => {
                 style={{
                   padding: expandedIndex === index ? '20px' : '10px 20px',
                   fontSize: '1rem',
-                  backgroundColor: index === 0 || index === 1 ? '#004d00' : '#1c1f26', // Green background for the first two items
-                  color: index === 0 || index === 1 ? '#a7ff83' : '#fff', // Light green text for the first two items
-                  border: index === 0 || index === 1 ? '2px solid #007f00' : '2px solid #6600CC', // Green border for the first two items
+                  backgroundColor: index <= 2 ? '#004d00' : '#1c1f26', // Mark first three items as green
+                  color: index <= 2 ? '#a7ff83' : '#fff', // Light green text for first three items
+                  border: index <= 2 ? '2px solid #007f00' : '2px solid #6600CC', // Green border for first three items
                   borderRadius: '8px',
                   cursor: 'pointer',
                   textAlign: 'left',

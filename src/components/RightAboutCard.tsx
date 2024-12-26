@@ -28,8 +28,9 @@ const RightAboutCard = () => {
       description: [
         'Connect your wallet.',
         'Navigate to the Create Pool Section.',
-        'Input the details of the pool (e.g., collection address, token symbol).',
-        'Click "Deploy Pool".',
+        'Input the contract address of the NFT Collection.',
+        'Click "Fetch Details" and Verify Name/Image',
+        'Click "Create Pool".',
       ],
     },
     {

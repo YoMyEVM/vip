@@ -28,8 +28,8 @@ const RightAboutCard = () => {
       description: [
         'Connect your wallet.',
         'Navigate to the Create Pool Section.',
-        'Input the contract address of the NFT Collection.',
-        'Click "Fetch Details" and Verify Name/Image',
+        'Input the contract address of the ERC721 NFT Collection.',
+        'Click "Fetch Details" and verify Name/Image',
         'Click "Create Pool".',
       ],
     },
